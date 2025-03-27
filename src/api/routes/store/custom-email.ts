@@ -1,8 +1,7 @@
 import { Request, Response } from "express"
 
 export const POST = async (req: Request, res: Response) => {
-  const { scope } = req as any // quick fix to access Medusa's DI container
-  const smtp = scope.resolve("custom-smtp-provider")
+  const smtp = req.scope.resolve("custom-smtp-provider")
 
   const { to, subject, text, html } = req.body
 
@@ -25,15 +24,9 @@ export const POST = async (req: Request, res: Response) => {
       message: "Email sent successfully",
     })
   } catch (err) {
-    if (err instanceof Error) {
-      res.status(500).json({
-        error: "Failed to send email",
-        details: err.message,
-      })
-    } else {
-      res.status(500).json({
-        error: "Unknown error occurred while sending email",
-      })
-    }
+    res.status(500).json({
+      error: "Failed to send email",
+      details: err instanceof Error ? err.message : "Unknown error",
+    })
   }
 }
