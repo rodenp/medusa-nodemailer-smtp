@@ -1,23 +1,19 @@
-import { ModulesDefinition } from "@medusajs/modules-sdk"
-import { CustomSmtpService } from "./services/custom-smtp"
 import { Router } from "express"
+import { CustomSmtpService } from "./services/custom-smtp"
 import { POST } from "./api/routes/store/custom-email"
-
-const serviceKey = "custom-smtp-provider"
 
 const routes = (router: Router) => {
   router.post("/custom-email", POST)
 }
 
-const moduleDefinition: ModulesDefinition = {
-  serviceKey,
+export default {
   service: CustomSmtpService,
   loaders: [
     {
-      service: serviceKey,
+      service: "custom-smtp-provider",
       loader: (container: any, config: any) => {
         const smtpService = new CustomSmtpService(config)
-        container.register(serviceKey, smtpService)
+        container.register("custom-smtp-provider", smtpService)
       },
     },
   ],
@@ -25,5 +21,3 @@ const moduleDefinition: ModulesDefinition = {
     store: routes,
   },
 }
-
-export default moduleDefinition

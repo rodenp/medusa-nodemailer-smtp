@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.POST = void 0;
 const POST = async (req, res) => {
-    const { scope } = req; // quick fix to access Medusa's DI container
+    const { scope } = req;
     const smtp = scope.resolve("custom-smtp-provider");
     const { to, subject, text, html } = req.body;
     if (!to || !subject || (!text && !html)) {
@@ -23,17 +23,10 @@ const POST = async (req, res) => {
         });
     }
     catch (err) {
-        if (err instanceof Error) {
-            res.status(500).json({
-                error: "Failed to send email",
-                details: err.message,
-            });
-        }
-        else {
-            res.status(500).json({
-                error: "Unknown error occurred while sending email",
-            });
-        }
+        res.status(500).json({
+            error: "Failed to send email",
+            details: err instanceof Error ? err.message : "Unknown error",
+        });
     }
 };
 exports.POST = POST;
