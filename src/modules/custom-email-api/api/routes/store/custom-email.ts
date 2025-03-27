@@ -1,8 +1,8 @@
-
 import { Request, Response } from "express"
 
 export const POST = async (req: Request, res: Response) => {
-  const smtp = req.scope.resolve("custom-smtp-provider")
+  const { scope } = req as any // quick fix to access Medusa's DI container
+  const smtp = scope.resolve("custom-smtp-provider")
 
   const { to, subject, text, html } = req.body
 

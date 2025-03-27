@@ -1,7 +1,4 @@
-
-import { ModuleExports } from "@medusajs/types"
-
-const module: ModuleExports = {
+export default {
   api: {
     store: {
       routes: [
@@ -14,5 +11,3 @@ const module: ModuleExports = {
     },
   },
 }
-
-export default module
