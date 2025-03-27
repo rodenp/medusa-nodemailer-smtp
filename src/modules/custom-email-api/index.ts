@@ -5,7 +5,7 @@ export default {
         {
           method: "POST",
           path: "/custom-email",
-          handler: __dirname + "/api/routes/store/custom-email.ts",
+          handler: __dirname + "/api/routes/store/custom-email.js",
         },
       ],
     },
