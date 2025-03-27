@@ -4,7 +4,8 @@
   "description": "A custom email API module for Medusa v2 using Nodemailer",
   "main": "index.ts",
   "scripts": {
-    "start": "echo 'Add this to a Medusa project and restart the server.'"
+    "start": "echo 'Add this to a Medusa project and restart the server.'",
+    "build": "tsc"
   },
   "keywords": [
     "medusa",
@@ -18,6 +19,7 @@
   "dependencies": {
     "@medusajs/medusa": "^2.6.1",
     "@medusajs/modules-sdk": "^2.6.1",
-    "@medusajs/types": "^2.6.1"
+    "@medusajs/types": "^2.6.1",
+    "express": "^4.21.2"
   }
 }
