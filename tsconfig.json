@@ -1,1 +1,12 @@
-{ "compilerOptions": { "target": "ESNext", "module": "CommonJS" } }
+{
+    "compilerOptions": {
+      "target": "ES2019",
+      "module": "CommonJS",
+      "declaration": true,
+      "outDir": "dist",
+      "rootDir": "./",
+      "strict": true,
+      "esModuleInterop": true
+    },
+    "include": ["index.ts", "api/**/*"]
+  }
