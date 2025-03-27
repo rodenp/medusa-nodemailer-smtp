@@ -1,0 +1,13 @@
+
+{
+  "name": "medusa-nodemailer-smtp",
+  "version": "1.0.0",
+  "description": "A custom email API module for Medusa v2 using Nodemailer",
+  "main": "index.ts",
+  "scripts": {
+    "start": "echo 'Add this to a Medusa project and restart the server.'"
+  },
+  "keywords": ["medusa", "email", "smtp", "nodemailer", "module"],
+  "author": "Your Name",
+  "license": "MIT"
+}
